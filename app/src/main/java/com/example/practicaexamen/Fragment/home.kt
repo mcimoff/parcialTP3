@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Switch
+import android.widget.Button
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.practicaexamen.Persona
 import com.example.practicaexamen.R
 import com.example.practicaexamen.adapter.adapter
 import com.google.android.material.snackbar.Snackbar
@@ -20,10 +20,11 @@ private const val ARG_PARAM2 = "param2"
 
 lateinit var vistaHome : View
 var personas: MutableList<Persona> = ArrayList<Persona>();
-lateinit var listPersona: RecyclerView
+lateinit var listpersonas: RecyclerView
 lateinit var personaListAdapter: adapter
 lateinit var  linearLayoutManager: LinearLayoutManager;
-lateinit var switch : Switch
+lateinit var  buttonGoToLogin: Button
+
 
 /**
  * A simple [Fragment] subclass.
@@ -34,6 +35,8 @@ class home : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +52,9 @@ class home : Fragment() {
     ): View? {
         vistaHome = inflater.inflate(R.layout.fragment_home, container, false)
 
-        listPersona = vistaHome.findViewById((R.id.recycleHome))
-        switch = vistaHome.findViewById((R.id.switch1))
+        listpersonas = vistaHome.findViewById((R.id.recycleHome))
+
+        buttonGoToLogin = vistaHome.findViewById((R.id.buttonGoToLogin))
 
         return vistaHome
     }
@@ -58,36 +62,44 @@ class home : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        buttonGoToLogin.setOnClickListener {
 
-        switch.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                switch.text = "Activo"
-            } else {
-                switch.text = "Inactivo"
-            }
+           var action = homeDirections.actionFragmentHomeToActivityLogin()
+
+            vistaHome.findNavController().navigate(action)
         }
 
-        for (i in 1..5){
-            personas.add(Persona("Raul"))
-            personas.add(Persona("Fabian"))
-            personas.add(Persona("Maria"))
-            personas.add(Persona("Beatriz"))
+        for (i in 1..5) {
+            personas.add(Persona("Raul", "Bulldog", 5))
+            personas.add(Persona("Fabian", "Cocker", 2))
+            personas.add(Persona("Maria", "Labrador", 7))
+            personas.add(Persona("Pancho", "Salchicha", 4))
         }
 
-        listPersona.setHasFixedSize(true)
+        listpersonas.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
 
-        listPersona.layoutManager = linearLayoutManager
+        listpersonas.layoutManager = linearLayoutManager
 
         personaListAdapter = adapter(personas) { x ->
             onItemClick(x)
+
+
         }
 
-        listPersona.adapter = personaListAdapter
+        listpersonas.adapter = personaListAdapter
+
     }
+
 
     fun onItemClick (position: Int): Boolean{
         Snackbar.make(vistaHome,position.toString(), Snackbar.LENGTH_SHORT).show()
+        personas[position]
         return true
     }
+
+
+
+
+
 }

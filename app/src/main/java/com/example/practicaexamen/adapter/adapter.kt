@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practicaexamen.Holder.holder
-import com.example.practicaexamen.Persona
+import entity.Persona
 import com.example.practicaexamen.R
 
 class adapter (
-    private var incidenteList: MutableList<Persona>,
+    private var incidenteList: MutableList<entity.Persona>,
     val onItemClick: (Int) -> Boolean
 ): RecyclerView.Adapter<holder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): holder {
@@ -19,7 +19,7 @@ class adapter (
 
     override fun onBindViewHolder(holder: holder, position: Int) {
         holder.setName(incidenteList[position].nombre)
-
+        holder.redirection()
 
 
 
@@ -31,7 +31,7 @@ class adapter (
 
 
 
-    fun setData(newData: ArrayList<Persona>){
+    fun setData(newData: ArrayList<entity.Persona>){
         this.incidenteList = newData
         this.notifyDataSetChanged()
     }
