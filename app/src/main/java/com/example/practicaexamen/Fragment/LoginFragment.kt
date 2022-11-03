@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.findNavController
-import com.example.practicaexamen.LoginFragmentDirections
+import com.example.practicaexamen.Fragment.LoginFragmentDirections
 import com.example.practicaexamen.R
 
 // TODO: Rename parameter arguments, choose names that match

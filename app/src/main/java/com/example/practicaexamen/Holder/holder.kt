@@ -7,7 +7,7 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practicaexamen.Fragment.homeDirections
-import entity.Persona
+import com.example.practicaexamen.Fragment.Persona
 import com.example.practicaexamen.R
 
 class holder (v: View): RecyclerView.ViewHolder(v){
@@ -33,8 +33,8 @@ class holder (v: View): RecyclerView.ViewHolder(v){
 
     fun redirection () {
         btnDescrip.setOnClickListener {
-            lateinit var persona: entity.Persona
-            var action = homeDirections.actionHome2ToDetalleFragmento(persona)
+            lateinit var persona: Persona
+            var action = homeDirections.actionHome2ToDetalleFragmento()
 
             view.findNavController().navigate(action)
         }

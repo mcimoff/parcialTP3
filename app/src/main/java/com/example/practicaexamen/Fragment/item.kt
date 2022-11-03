@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.findNavController
-import entity.Persona
+import com.example.practicaexamen.Fragment.Persona
 import com.example.practicaexamen.R
-import com.example.practicaexamen.itemDirections
+import com.example.practicaexamen.Fragment.itemDirections
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,8 +51,8 @@ class item : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        lateinit var persona : entity.Persona
-        var action = itemDirections.actionItemToDetalleFragmento(persona)
+        lateinit var persona : Persona
+        var action = itemDirections.actionItemToDetalleFragmento()
 
         vistaItem.findNavController().navigate(action)
 

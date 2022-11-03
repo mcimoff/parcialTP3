@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentSettings">
+    tools:context="Fragment.FragmentSettings">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_settings"
-        android:name="com.example.practicaexamen.FragmentSettings"
+        android:name="com.example.practicaexamen.Fragment.FragmentSettings"
         android:layout_width="396dp"
         android:layout_height="543dp"
         android:layout_marginTop="20dp"
